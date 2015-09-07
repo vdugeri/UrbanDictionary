@@ -6,9 +6,9 @@ the use of simple and basic programming concepts.
 #Design
 *classes
  - Dictionary: The main dictionary
- -ModifyDictionary: The data access layer, responsible for
-  performin CRUD operations on the dictionary.
- -RankWords: Returns a word count in descending order of
+ - ModifyDictionary: The data access layer, responsible for
+   performin CRUD operations on the dictionary.
+ - RankWords: Returns a word count in descending order of
    words used in sample sentences in the dictionary
 
 
