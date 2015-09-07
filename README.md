@@ -12,17 +12,27 @@ the use of simple and basic programming concepts.
    words used in sample sentences in the dictionary
 
  *UML
- -----------------------      -------------------------------------------------
-|  Dictionary          |      |    ModifyDictionary                           |
- -----------------------      -------------------------------------------------
-| dictionary: array    |      | dictionary: array                             |
-------------------------      -------------------------------------------------
-| getDictionary():array|      | __construct()                                 |
-------------------------      | createEntry(word, meaning, sentence):array    |
-                              | deleteEntry(word):string                      |
-                              | editEntry(word, newMeaning, newSentence):array|
-                              | findEntry($word):array                        |
-                              -------------------------------------------------
+ -----------------------
+|  Dictionary          |
+ -----------------------
+| dictionary: array    |
+------------------------
+| getDictionary():array|
+------------------------
+
+
+-------------------------------------------------
+|    ModifyDictionary                           |
+-------------------------------------------------
+| dictionary: array                             |
+-------------------------------------------------
+| __construct()                                 |
+| createEntry(word, meaning, sentence):array    |
+| deleteEntry(word):string                      |
+| editEntry(word, newMeaning, newSentence):array|
+| findEntry($word):array                        |
+-------------------------------------------------
+
 
  --------------------
  |   RankWords      |
