@@ -11,39 +11,8 @@ the use of simple and basic programming concepts.
  -RankWords: Returns a word count in descending order of
    words used in sample sentences in the dictionary
 
- *UML
- -----------------------
-|  Dictionary          |
- -----------------------
-| dictionary: array    |
-------------------------
-| getDictionary():array|
-------------------------
 
-
--------------------------------------------------
-|    ModifyDictionary                           |
--------------------------------------------------
-| dictionary: array                             |
--------------------------------------------------
-| __construct()                                 |
-| createEntry(word, meaning, sentence):array    |
-| deleteEntry(word):string                      |
-| editEntry(word, newMeaning, newSentence):array|
-| findEntry($word):array                        |
--------------------------------------------------
-
-
- --------------------
- |   RankWords      |
- --------------------
- |                  |
- --------------------
- |                  |
- --------------------
-
-
- #Testning
+ #Testing
  The phpunit framework for testing is used to perform
  unit test on the classes. The TDD principle has been
  employed to make the application robust
