@@ -13,7 +13,7 @@ use Dictionary\ModifyDictionary;
 
 class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 
-  protected $dictionary;
+    protected $dictionary;
 	protected $modifier;
 
 	protected function setUp()
