@@ -13,28 +13,33 @@ use Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase {
 
+	protected $dictionary;
 
+	protected function setUp()
+	{
+		$this->dictionary = Dictionary::getDictionary();
+	}
 	public function testPush()
 	{
-		$dictionary = Dictionary::getDictionary();
-		$this->assertEquals(0, count($dictionary));
-		array_push($dictionary, 'foo');
-		array_push($dictionary, 'bar');
-		$this->assertEquals(2, count($dictionary));
-		$this->assertContains('foo', $dictionary);
-		$this->assertContains('bar', $dictionary);
+
+		$this->assertEquals(0, count($this->dictionary));
+		array_push($this->dictionary, 'foo');
+		array_push($this->dictionary, 'bar');
+		$this->assertEquals(2, count($this->dictionary));
+		$this->assertContains('foo', $this->dictionary);
+		$this->assertContains('bar', $this->dictionary);
 	}
 
 	public function testPop()
 	{
-		$dictionary = Dictionary::getDictionary();
-		$this->assertEquals(0, count($dictionary));
-		array_push($dictionary, 'foo');
-		array_push($dictionary, 'bar');
-		$this->assertEquals(2, count($dictionary));
-		array_pop($dictionary);
-		$this->assertEquals(1, count($dictionary));
-		$this->assertNotContains('bar', $dictionary);
+
+		$this->assertEquals(0, count($this->dictionary));
+		array_push($this->dictionary, 'foo');
+		array_push($this->dictionary, 'bar');
+		$this->assertEquals(2, count($this->dictionary));
+		array_pop($this->dictionary);
+		$this->assertEquals(1, count($this->dictionary));
+		$this->assertNotContains('bar', $this->dictionary);
 	}
 
 }

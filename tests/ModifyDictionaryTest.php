@@ -14,14 +14,20 @@ use Dictionary\ModifyDictionary;
 
 class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 
+  protected $dictionary;
+	protected $modifier;
 
+	protected function setUp()
+	{
+		$this->dictionary = Dictionary::getDictionary();
+		$this->modifier = new ModifyDictionary();
+
+	}
 
 	public function testCreateEntry()
 	{
-		$modifier = new ModifyDictionary();
-		$dictionary = Dictionary::getDictionary();
-		$this->assertEquals(0, count($dictionary));
-		$array = $modifier->createEntry('slang','word alias', 'rosco is the slang for a shot gun');
+		$this->assertEquals(0, count($this->dictionary));
+		$array = $this->modifier->createEntry('slang','word alias', 'rosco is the slang for a shot gun');
 		$this->assertEquals(['meaning'=>'word alias','sample-sentence'=> 'rosco is the slang for a shot gun'],
 				$array);
 
@@ -30,9 +36,9 @@ class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testFindEntry()
 	{
-		$modifier = new ModifyDictionary();
-		$modifier->createEntry('slang', 'word alias', 'rosco is a slang for shot gun');
-		$word = $modifier->findEntry('slang');
+
+		$this->modifier->createEntry('slang', 'word alias', 'rosco is a slang for shot gun');
+		$word = $this->modifier->findEntry('slang');
 		$this->assertEquals([
 			'meaning' => 'word alias',
 			'sample-sentence' => 'rosco is a slang for shot gun'
@@ -41,18 +47,18 @@ class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testDeleteEntry()
 	{
-		$modifier = new ModifyDictionary();
-		$array = $modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
-		$modifier->deleteEntry('tight');
+
+		$array = $this->modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
+		$this->modifier->deleteEntry('tight');
 		$this->assertNotContains('tight', $array);
 	}
 
 
 	public function testEditEntry()
 	{
-		$modifier = new ModifyDictionary();
-		$modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
-		$array = $modifier->editEntry('tight', 'Satisfaction', 'That is tight');
+
+		$this->modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
+		$array = $this->modifier->editEntry('tight', 'Satisfaction', 'That is tight');
 		$this->assertEquals([
 				'meaning'=> 'Satisfaction',
 				'sample-sentence' => 'That is tight'],
