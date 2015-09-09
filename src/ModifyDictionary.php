@@ -57,7 +57,12 @@ class ModifyDictionary {
 	public function findEntry($word)
 	{
 		$found = $this->dictionary[$word];
-		return $found;
+		if ($found) {
+			return $found;
+		} else {
+			throw new IndexNotFoundException('The word {$word} does not exist in the dictionary');
+		}
+
 	}
 
 	/*
@@ -79,7 +84,7 @@ class ModifyDictionary {
 		if ($this->findEntry($word)) {
 			unset($this->dictionary[$word]);
 		} else {
-			return 'element not found';
+			throw new IndexNotFoundException('element not found');
 		}
 	}
 
