@@ -8,7 +8,7 @@ namespace Dictionary;
  * descending order of
  * magnitude.
  *
- * @author: Verem Dugeri
+ * @author : Verem Dugeri
  * Date: 9/7/15
  * Time: 9:38 AM
  */
@@ -25,8 +25,9 @@ class RankWords {
 	 * This method takes in a string and returns
 	 * the ranking of the individual words
 	 *
-	 * It makes heavy us of the php standard
-	 * library string and array functions.
+	 * Sadly,it makes heavy us of the php standard
+	 * library string and array functions. I have
+	 * to trust them against my will here.
 	 *
 	 * @return $ranked array.
 	 */

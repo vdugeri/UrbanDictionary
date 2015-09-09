@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andela
+ * @author : Verem Dugeri.
  * Date: 9/7/15
  * Time: 4:43 PM
  */
@@ -30,9 +29,6 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase {
 	}
 	public function testTrue()
 	{
-
-
-
 		$this->assertEquals(0, count($this->dictionary));
 
 		$this->assertEquals(2, count($this->array));

@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andela
+ * @author: verem Dugeri
  * Date: 9/7/15
  * Time: 2:51 PM
  */
@@ -53,7 +52,6 @@ class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 		$this->assertNotContains('tight', $array);
 	}
 
-
 	public function testEditEntry()
 	{
 
@@ -68,4 +66,5 @@ class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 				'sample-sentence'=>'tight, tight, tight'],
 				$array);
 	}
+
 }

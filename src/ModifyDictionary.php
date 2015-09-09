@@ -8,7 +8,7 @@
  *
  * @property $dictionary array;
  *
- * @author: Verem Dugeri
+ * @author : Verem Dugeri
  * Date: 9/7/15
  * Time: 2:46 PM
  */
@@ -38,13 +38,14 @@ class ModifyDictionary {
 	 *
 	 * @return $dictionary[$word] array
 	 */
-	public function createEntry($word, $meaning,$sampleSentence)
-	{
-		$this->dictionary[$word] = [
-				'meaning' => $meaning,
-				'sample-sentence' => $sampleSentence];
 
-		return $this->dictionary[$word];
+	public function deleteEntry($word)
+	{
+		if ($this->findEntry($word)) {
+			unset($this->dictionary[$word]);
+		} else {
+			throw new IndexNotFoundException('element {$word} not found');
+		}
 	}
 
 	/*
@@ -54,6 +55,7 @@ class ModifyDictionary {
 	 * and searches the dictionary for the presence
 	 * or otherwise of the key.
 	 */
+
 	public function findEntry($word)
 	{
 		$found = $this->dictionary[$word];
@@ -79,15 +81,6 @@ class ModifyDictionary {
 	 * @return string, conditional.
 	 */
 
-	public function deleteEntry($word)
-	{
-		if ($this->findEntry($word)) {
-			unset($this->dictionary[$word]);
-		} else {
-			throw new IndexNotFoundException('element not found');
-		}
-	}
-
 	public function editEntry($word, $newMeaning, $newSentence)
 	{
 		if ($this->findEntry($word)) {
@@ -96,6 +89,15 @@ class ModifyDictionary {
 		} else {
 			$this->createEntry($word, $newMeaning, $newSentence);
 		}
+
+		return $this->dictionary[$word];
+	}
+
+	public function createEntry($word, $meaning,$sampleSentence)
+	{
+		$this->dictionary[$word] = [
+				'meaning' => $meaning,
+				'sample-sentence' => $sampleSentence];
 
 		return $this->dictionary[$word];
 	}

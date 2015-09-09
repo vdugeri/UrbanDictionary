@@ -1,13 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andela
+ * @author: verem Dugeri.
  * Date: 9/7/15
  * Time: 5:18 PM
  */
 
 namespace Dictionary\Test;
-
 
 use Dictionary\Dictionary;
 
@@ -19,12 +17,15 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase {
 	{
 		$this->dictionary = Dictionary::getDictionary();
 	}
+
+	public function testEmpty()
+	{
+		$this->assertTrue(empty($this->dictionary));
+	}
+
 	public function testPush()
 	{
-
-		$this->assertEquals(0, count($this->dictionary));
-		array_push($this->dictionary, 'foo');
-		array_push($this->dictionary, 'bar');
+		$this->populateDictionary();
 		$this->assertEquals(2, count($this->dictionary));
 		$this->assertContains('foo', $this->dictionary);
 		$this->assertContains('bar', $this->dictionary);
@@ -32,14 +33,18 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase {
 
 	public function testPop()
 	{
-
-		$this->assertEquals(0, count($this->dictionary));
-		array_push($this->dictionary, 'foo');
-		array_push($this->dictionary, 'bar');
+		$this->populateDictionary();
 		$this->assertEquals(2, count($this->dictionary));
 		array_pop($this->dictionary);
 		$this->assertEquals(1, count($this->dictionary));
 		$this->assertNotContains('bar', $this->dictionary);
 	}
+
+	private function populateDictionary()
+	{
+		array_push($this->dictionary, 'foo');
+		array_push($this->dictionary, 'bar');
+	}
+
 
 }
