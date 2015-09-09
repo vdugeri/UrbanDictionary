@@ -6,7 +6,7 @@
  * property, the array of words.
  *
  *
- * @author: Verem Dugeri.
+ * @author : Verem Dugeri.
  * Date: 9/7/15
  * Time: 2:39 PM
  */

@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andela
+ * @author : Verem Dugeri.
  * Date: 9/7/15
  * Time: 4:43 PM
  */
@@ -16,19 +15,26 @@ use Dictionary\RankWords;
 class RankWordsTest extends \PHPUnit_Framework_TestCase {
 
 
-	public function testTrue()
+	protected $dictionary;
+	protected $modifier;
+	protected $array;
+	
+	protected  function setUp()
 	{
-		$dictionary = Dictionary::getDictionary();
-		$modifier = new ModifyDictionary();
-
-		$this->assertEquals(0, count($dictionary));
-		$array = $modifier->createEntry("tight",
+		$this->dictionary = Dictionary::getDictionary();
+		$this->modifier = new ModifyDictionary();
+		$this->array = $this->modifier->createEntry("tight",
 				"When someone shows approval",
 				"Andrei: Prosper, have you completed the curriculum.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!.");
-		$this->assertEquals(2, count($array));
-		$this->assertEquals('When someone shows approval', $array['meaning']);
+	}
+	public function testTrue()
+	{
+		$this->assertEquals(0, count($this->dictionary));
 
-		$ranked = RankWords::rankWords($array['sample-sentence']);
+		$this->assertEquals(2, count($this->array));
+		$this->assertEquals('When someone shows approval', $this->array['meaning']);
+
+		$ranked = RankWords::rankWords($this->array['sample-sentence']);
   	$this->assertEquals(2, $ranked['Prosper']);
 		$this->assertEquals(2, $ranked['Andrei']);
 		$this->assertEquals(3, $ranked['Tight']);

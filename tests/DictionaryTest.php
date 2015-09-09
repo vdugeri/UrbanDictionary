@@ -1,40 +1,50 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: andela
+ * @author: verem Dugeri.
  * Date: 9/7/15
  * Time: 5:18 PM
  */
 
 namespace Dictionary\Test;
 
-
 use Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase {
 
+	protected $dictionary;
+
+	protected function setUp()
+	{
+		$this->dictionary = Dictionary::getDictionary();
+	}
+
+	public function testEmpty()
+	{
+		$this->assertTrue(empty($this->dictionary));
+	}
 
 	public function testPush()
 	{
-		$dictionary = Dictionary::getDictionary();
-		$this->assertEquals(0, count($dictionary));
-		array_push($dictionary, 'foo');
-		array_push($dictionary, 'bar');
-		$this->assertEquals(2, count($dictionary));
-		$this->assertContains('foo', $dictionary);
-		$this->assertContains('bar', $dictionary);
+		$this->populateDictionary();
+		$this->assertEquals(2, count($this->dictionary));
+		$this->assertContains('foo', $this->dictionary);
+		$this->assertContains('bar', $this->dictionary);
 	}
 
 	public function testPop()
 	{
-		$dictionary = Dictionary::getDictionary();
-		$this->assertEquals(0, count($dictionary));
-		array_push($dictionary, 'foo');
-		array_push($dictionary, 'bar');
-		$this->assertEquals(2, count($dictionary));
-		array_pop($dictionary);
-		$this->assertEquals(1, count($dictionary));
-		$this->assertNotContains('bar', $dictionary);
+		$this->populateDictionary();
+		$this->assertEquals(2, count($this->dictionary));
+		array_pop($this->dictionary);
+		$this->assertEquals(1, count($this->dictionary));
+		$this->assertNotContains('bar', $this->dictionary);
 	}
+
+	private function populateDictionary()
+	{
+		array_push($this->dictionary, 'foo');
+		array_push($this->dictionary, 'bar');
+	}
+
 
 }
