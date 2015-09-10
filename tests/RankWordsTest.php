@@ -27,7 +27,7 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase {
 				"When someone shows approval",
 				"Andrei: Prosper, have you completed the curriculum.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!.");
 	}
-	public function testTrue()
+	public function testRankWords()
 	{
 		$this->assertEquals(0, count($this->dictionary));
 

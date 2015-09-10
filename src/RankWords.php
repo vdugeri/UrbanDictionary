@@ -23,17 +23,29 @@ class RankWords {
 	 *@method rankWords
 	 * @param $input string.
 	 * This method takes in a string and returns
-	 * the ranking of the individual words
+	 * the ranking in frequency of the
+	 * individual words
 	 *
-	 * Sadly,it makes heavy us of the php standard
+	 * Sadly,it makes heavy use of the php standard
 	 * library string and array functions. I have
-	 * to trust them against my will here.
+	 * to trust them against my will.
+	 *
+	 * The function takes the imputed array of
+	 * words and maps them into an array of
+	 * $word => 1 key value pair for each
+	 * element.
+	 *
+	 * It then proceeds to reduce the words
+	 * using the array_count_values function
+	 * into an array of distinct words and
+	 * frequency of occurrence.
 	 *
 	 * @return $ranked array.
 	 */
 	public static function rankWords($input)
 	{
-		$ranked = array_count_values(str_word_count($input,1));
+		$wordMap = str_word_count($input,1);
+		$ranked = array_count_values($wordMap);
 		arsort($ranked);
 		return $ranked;
 	}

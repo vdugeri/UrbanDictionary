@@ -13,14 +13,15 @@ use Dictionary\ModifyDictionary;
 
 class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 
-    protected $dictionary;
+	protected $dictionary;
 	protected $modifier;
+	protected $populatedDictionary;
 
 	protected function setUp()
 	{
 		$this->dictionary = Dictionary::getDictionary();
 		$this->modifier = new ModifyDictionary();
-
+		$this->populatedDictionary = Dictionary::populateDictionary();
 	}
 
 	public function testCreateEntry()
@@ -42,6 +43,15 @@ class ModifyDictionaryTest extends \PHPUnit_Framework_TestCase {
 			'meaning' => 'word alias',
 			'sample-sentence' => 'rosco is a slang for shot gun'
 		], $word);
+
+		$this->assertEquals(20, count($this->populatedDictionary));
+		$found = $this->modifier->findEntry('Elusive');
+		$this->assertEquals([
+			'meaning'=> 'Hard to grasp',
+			'sample-sentence' => 'The words to the song are elusive, as the singer tends to mumble.'
+		], $found);
+
+		$this->assertContains('Hard to grasp', $found['meaning']);
 	}
 
 	public function testDeleteEntry()
