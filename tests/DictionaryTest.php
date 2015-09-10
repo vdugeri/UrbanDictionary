@@ -40,6 +40,13 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase {
 		$this->assertNotContains('bar', $this->dictionary);
 	}
 
+	public function testPopulateDictionary()
+	{
+		$this->dictionary = Dictionary::populateDictionary();
+		$this->assertEquals(20, count($this->dictionary));
+		$this->assertNotEquals(21, count($this->dictionary));
+	}
+
 	private function populateDictionary()
 	{
 		array_push($this->dictionary, 'foo');

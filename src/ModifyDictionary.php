@@ -24,6 +24,7 @@ class ModifyDictionary {
 	public function __construct()
 	{
 		$this->dictionary = Dictionary::getDictionary();
+		$this->dictionary = Dictionary::populateDictionary();
 	}
 
 	/*
@@ -93,6 +94,15 @@ class ModifyDictionary {
 		return $this->dictionary[$word];
 	}
 
+	/*
+	 * @method createEntry
+	 * Creates an entry in the dictionary array
+	 * Each entry consists of a word, its meaning
+	 * and the sample sentence containing the usage
+	 * example of the word.
+	 *
+	 * @return $dictionary[$word] : the created entry
+	 */
 	public function createEntry($word, $meaning,$sampleSentence)
 	{
 		$this->dictionary[$word] = [
