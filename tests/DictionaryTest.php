@@ -1,13 +1,13 @@
 <?php
 /**
- * @author: verem Dugeri.
+ * @author: Verem Dugeri.
  * Date: 9/7/15
  * Time: 5:18 PM
  */
 
-namespace Dictionary\Test;
+namespace Verem\Dictionary\Test;
 
-use Dictionary\Dictionary;
+use Verem\Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase {
 
@@ -18,15 +18,15 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase {
 		$this->dictionary = Dictionary::getDictionary();
 	}
 
-	public function testEmpty()
+	public function testNotEmpty()
 	{
-		$this->assertTrue(empty($this->dictionary));
+		$this->assertFalse(empty($this->dictionary));
 	}
 
 	public function testPush()
 	{
 		$this->populateDictionary();
-		$this->assertEquals(2, count($this->dictionary));
+		$this->assertEquals(22, count($this->dictionary));
 		$this->assertContains('foo', $this->dictionary);
 		$this->assertContains('bar', $this->dictionary);
 	}
@@ -34,15 +34,16 @@ class DictionaryTest extends \PHPUnit_Framework_TestCase {
 	public function testPop()
 	{
 		$this->populateDictionary();
-		$this->assertEquals(2, count($this->dictionary));
+		$this->assertEquals(22, count($this->dictionary));
 		array_pop($this->dictionary);
-		$this->assertEquals(1, count($this->dictionary));
+		$this->assertEquals(21, count($this->dictionary));
 		$this->assertNotContains('bar', $this->dictionary);
 	}
 
 	public function testPopulateDictionary()
 	{
-		$this->dictionary = Dictionary::populateDictionary();
+		Dictionary::populateDictionary();
+		$this->dictionary = Dictionary::getDictionary();
 		$this->assertEquals(20, count($this->dictionary));
 		$this->assertNotEquals(21, count($this->dictionary));
 	}

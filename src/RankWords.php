@@ -1,5 +1,7 @@
 <?php
-namespace Dictionary;
+
+namespace Verem\Dictionary;
+
 /**
  * class RankWords
  * This class creates an array of words and
@@ -16,39 +18,39 @@ namespace Dictionary;
 
 
 
-class RankWords {
+class RankWords
+{
+    /**
+     * @method rankWords
+     *
+     * This method takes in a string and returns
+     * the ranking in frequency of the
+     * individual words
+     *
+     * Sadly,it makes heavy use of the php standard
+     * library string and array functions. I have
+     * to trust them against my will.
+     *
+     * The function takes the imputed array of
+     * words and maps them into an array of
+     * $word => 1 key value pair for each
+     * element.
+     *
+     * It then proceeds to reduce the words
+     * using the array_count_values function
+     * into an array of distinct words and
+     * frequency of occurrence.
+     *
+     * @param $input
+     * @return array
+     */
 
-
-	/*
-	 *@method rankWords
-	 * @param $input string.
-	 * This method takes in a string and returns
-	 * the ranking in frequency of the
-	 * individual words
-	 *
-	 * Sadly,it makes heavy use of the php standard
-	 * library string and array functions. I have
-	 * to trust them against my will.
-	 *
-	 * The function takes the imputed array of
-	 * words and maps them into an array of
-	 * $word => 1 key value pair for each
-	 * element.
-	 *
-	 * It then proceeds to reduce the words
-	 * using the array_count_values function
-	 * into an array of distinct words and
-	 * frequency of occurrence.
-	 *
-	 * @return $ranked array.
-	 */
-	public static function rankWords($input)
-	{
-		$wordMap = str_word_count($input,1);
-		$ranked = array_count_values($wordMap);
-		arsort($ranked);
-		return $ranked;
-	}
-
-
+    public static function rankWords($input)
+    {
+        $wordMap = str_word_count($input, 1);
+        $ranked = array_count_values($wordMap);
+        arsort($ranked);
+        
+        return $ranked;
+    }
 }
