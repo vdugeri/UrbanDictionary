@@ -1,13 +1,13 @@
 <?php
 /**
- * @author: verem Dugeri.
+ * @author: Verem Dugeri.
  * Date: 9/7/15
  * Time: 5:18 PM
  */
 
-namespace Dictionary\Test;
+namespace Verem\Dictionary\Test;
 
-use Dictionary\Dictionary;
+use Verem\Dictionary\Dictionary;
 
 class DictionaryTest extends \PHPUnit_Framework_TestCase {
 

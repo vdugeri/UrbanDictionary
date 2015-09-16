@@ -4,9 +4,10 @@ slangs. It is a simple project that demonstrates
 the use of simple and basic programming concepts.
 
 #Design
-*classes
+
+*Classes
  - Dictionary: The main dictionary
- - ModifyDictionary: The data access layer, responsible for
+ - DictionaryManager: The data access layer, responsible for
    performing CRUD operations on the dictionary.
  - RankWords: Returns a word count in descending order of
    words used in sample sentences in the dictionary

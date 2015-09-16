@@ -12,28 +12,38 @@
  * Time: 10:11 AM
  */
 
-namespace Dictionary;
-
-
+namespace Verem\Dictionary;
 
 class IndexNotFoundException extends \Exception {
 
 
+	/**
+	 * @var string
+	 */
+
 	private $message;
+
+	/**
+	 * @param string $message
+	 */
+
 	public function __construct($message)
 	{
 		$this->message = $message;
 	}
 
-	/*
+
+	/**
 	 * @method getErrorMessage
-	 * @return $message string :
+	 *
 	 * returns an error message to the calling
 	 * method. Most appropriately done
 	 * in the catch clause of the
 	 * try-catch block.
 	 *
 	 * usage $e->getErrorMessage();
+	 *
+	 * @return string
 	 */
 	public function getErrorMessage()
 	{
