@@ -5,7 +5,7 @@ the use of simple and basic programming concepts.
 
 #Design
 
-*Classes
+Classes
  - Dictionary: The main dictionary
  - DictionaryManager: The data access layer, responsible for
    performing CRUD operations on the dictionary.
