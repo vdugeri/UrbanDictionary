@@ -5,21 +5,21 @@
  * Time: 2:51 PM
  */
 
-namespace Dictionary\Test;
+namespace Verem\Dictionary\Test;
 
-use Dictionary\Dictionary;
-use Dictionary\ModifyDictionary;
+use Verem\Dictionary\Dictionary;
+use Verem\Dictionary\Dictionarymanager;
 
 class DictionaryManagerTest extends \PHPUnit_Framework_TestCase
 {
     protected $dictionary;
-    protected $modifier;
+    protected $manager;
     protected $populatedDictionary;
 
     protected function setUp()
     {
         $this->dictionary = Dictionary::getDictionary();
-        $this->modifier = new DictionaryManager();
+        $this->manager = new DictionaryManager();
         $this->populatedDictionary = Dictionary::populateDictionary();
     }
 
@@ -27,27 +27,32 @@ class DictionaryManagerTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(0, count($this->dictionary));
 
-        $array = $this->modifier->createEntry('slang', 'word alias', 'rosco is the slang for a shot gun');
+        $array = $this->manager->createEntry('slang', 'word alias', 'rosco is the slang for a shot gun');
 
-        $this->assertEquals(2, count($array));
+        $this->assertEquals(1, count($array[0]));
         $this->assertEquals(['meaning'=>'word alias', 'sample-sentence'=> 'rosco is the slang for a shot gun'],
-                $array);
+                $array[1]);
     }
 
+	/*
+	 * Test to see if an entry can be found
+	 * from array
+	 */
     public function testFindEntry()
     {
-        $this->modifier->createEntry('slang', 'word alias', 'rosco is a slang for shot gun');
+        $this->manager->createEntry('slang', 'word alias', 'rosco is a slang for shot gun');
 
-        $word = $this->modifier->findEntry('slang');
+        $word = $this->manager->findEntry('slang');
 
         $this->assertEquals([
             'meaning' => 'word alias',
             'sample-sentence' => 'rosco is a slang for shot gun'
         ], $word);
 
-        $this->assertEquals(20, count($this->populatedDictionary));
+        $this->populatedDictionary;
+        $this->assertEquals(20, count($this->dictionary));
 
-        $found = $this->modifier->findEntry('Elusive');
+        $found = $this->manager->findEntry('Elusive');
 
         $this->assertEquals([
             'meaning'=> 'Hard to grasp',
@@ -57,28 +62,32 @@ class DictionaryManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('Hard to grasp', $found['meaning']);
     }
 
+    /*
+     * Test to see if an entry can be deleted.
+     */
     public function testDeleteEntry()
     {
-        $array = $this->modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
+        $array = $this->manager->createEntry('tight', 'Approval', 'tight, tight, tight');
 
-        $this->modifier->deleteEntry('tight');
+        $this->manager->deleteEntry('tight');
         
-        $this->assertNotContains('tight', $array);
+        $this->assertNotContains('tight', $array[1]);
     }
 
     public function testEditEntry()
     {
-        $this->modifier->createEntry('tight', 'Approval', 'tight, tight, tight');
-        $array = $this->modifier->editEntry('tight', 'Satisfaction', 'That is tight');
+        $this->manager->createEntry('tight', 'Approval', 'tight, tight, tight');
+        $array = $this->manager->editEntry('tight', 'Satisfaction', 'That is tight');
 
+        $this->assertEquals(true, $array[0]);
         $this->assertEquals([
                 'meaning'=> 'Satisfaction',
                 'sample-sentence' => 'That is tight'],
-                $array);
+                $array[1]);
 
         $this->assertNotEquals([
                 'meaning'=> 'Approval',
                 'sample-sentence'=>'tight, tight, tight'],
-                $array);
+                $array[1]);
     }
 }

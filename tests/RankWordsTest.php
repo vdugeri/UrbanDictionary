@@ -5,16 +5,16 @@
  * Time: 4:43 PM
  */
 
-namespace Dictionary\Test;
+namespace Verem\Dictionary\Test;
 
-use Dictionary\Dictionary;
-use Dictionary\ModifyDictionary;
-use Dictionary\RankWords;
+use Verem\Dictionary\Dictionary;
+use Verem\Dictionary\DictionaryManager;
+use Verem\Dictionary\RankWords;
 
 class RankWordsTest extends \PHPUnit_Framework_TestCase
 {
     protected $dictionary;
-    protected $modifier;
+    protected $manager;
     protected $array;
 
     /**
@@ -23,8 +23,8 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->dictionary = Dictionary::getDictionary();
-        $this->modifier = new ModifyDictionary();
-        $this->array = $this->modifier->createEntry("tight",
+        $this->manager = new DictionaryManager();
+        $this->array = $this->manager->createEntry("tight",
                 "When someone shows approval",
                 "Andrei: Prosper, have you completed the curriculum.\nProsper: Yes.\nAndrei: Tight, Tight, Tight!!!.");
     }
@@ -37,12 +37,12 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase
      */
     public function testRankWords()
     {
-        $this->assertEquals(0, count($this->dictionary));
+        $this->assertEquals(20, count($this->dictionary));
 
         $this->assertEquals(2, count($this->array));
-        $this->assertEquals('When someone shows approval', $this->array['meaning']);
+        $this->assertEquals('When someone shows approval', $this->array[1]['meaning']);
 
-        $ranked = RankWords::rankWords($this->array['sample-sentence']);
+        $ranked = RankWords::rankWords($this->array[1]['sample-sentence']);
 
         $this->assertEquals(2, $ranked['Prosper']);
         $this->assertEquals(2, $ranked['Andrei']);
