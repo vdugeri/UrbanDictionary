@@ -44,11 +44,12 @@ class Dictionary
 
     /**
      * @method populateDictionary
+	 *
      * This method populates the dictionary
      * with a list of words, meanings and
      * sample sentences.
      *
-     * The words,meanings ans sample sentences
+     * The words, meanings ans sample sentences
      * are adapted from http://www.cram.com/flashcards
      *
      * @return array
