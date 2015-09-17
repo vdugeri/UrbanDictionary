@@ -1,6 +1,7 @@
 <?php
 
 namespace Verem\Dictionary;
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 /**
  * class RankWords
@@ -45,12 +46,22 @@ class RankWords
      * @return array
      */
 
-    public static function rankWords($input)
+    public static function rankWords(array $input)
     {
-        $wordMap = str_word_count($input, 1);
+		if(! is_array($input))
+		{
+			throw new \InvalidArgumentException('The input arguments should be an array');
+		}
+
+		$result = static::getSampleSentence($input);
+        $wordMap = str_word_count($result, 1);
         $ranked = array_count_values($wordMap);
         arsort($ranked);
         
         return $ranked;
     }
+	private function getSampleSentence(array $array)
+	{
+		return $array['sample-sentence'];
+	}
 }

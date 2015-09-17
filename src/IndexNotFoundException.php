@@ -21,7 +21,7 @@ class IndexNotFoundException extends \Exception {
 	 * @var string
 	 */
 
-	private $message;
+	protected $message;
 
 	/**
 	 * @param string $message
