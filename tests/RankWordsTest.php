@@ -45,7 +45,7 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase
 
         $ranked = RankWords::rankWords($this->array[1]);
 
-        $ranked = RankWords::rankWords($this->array[1]['sample-sentence']);
+        $ranked = RankWords::rankWords($this->array[1]);
         $this->assertEquals(2, $ranked['Prosper']);
         $this->assertEquals(2, $ranked['Andrei']);
         $this->assertEquals(3, $ranked['Tight']);
