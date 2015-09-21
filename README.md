@@ -73,4 +73,17 @@ $dictionary = Dictionary::getDictionary();
 ```````
 
 
+## Change log
+Please check out [CHANGELOG](CHANGELOG.md) file for information on what has changed recently.
+
+## Contributing
+Please check out [CONTRIBUTING](CONTRIBUTING.md) file for detailed contribution guidelines.
+
+## Credits
+Open-source Evangelist is maintained by `Verem Dugeri`.
+
+## License
+Open-source Evangelist is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for details.
+
+
 
