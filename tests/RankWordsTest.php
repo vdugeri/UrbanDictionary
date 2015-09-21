@@ -42,7 +42,11 @@ class RankWordsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, count($this->array));
         $this->assertEquals('When someone shows approval', $this->array['meaning']);
 
+<<<<<<< master
         $ranked = RankWords::rankWords($this->array['sample-sentence']);
+=======
+        $ranked = RankWords::rankWords($this->array[1]);
+>>>>>>> local
 
         $this->assertEquals(2, $ranked['Prosper']);
         $this->assertEquals(2, $ranked['Andrei']);

@@ -34,6 +34,13 @@ class DictionaryManagerTest extends \PHPUnit_Framework_TestCase
                 $array);
     }
 
+<<<<<<< master
+=======
+    /*
+     * Test to see if an entry can be found
+     * from array
+     */
+>>>>>>> local
     public function testFindEntry()
     {
         $this->modifier->createEntry('slang', 'word alias', 'rosco is a slang for shot gun');
@@ -77,8 +84,14 @@ class DictionaryManagerTest extends \PHPUnit_Framework_TestCase
                 $array);
 
         $this->assertNotEquals([
+<<<<<<< master
                 'meaning'=> 'Approval',
                 'sample-sentence'=>'tight, tight, tight'],
                 $array);
+=======
+                'meaning' => 'Approval',
+                'sample-sentence' => 'tight, tight, tight'],
+                $array[1]);
+>>>>>>> local
     }
 }

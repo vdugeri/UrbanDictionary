@@ -29,16 +29,17 @@ class DictionaryManager
     }
 
 
-    /**
-     * @method createEntry
-     *
-     * This method takes three parameters, creates
-     * an associative array and inserts the same
-     * into the dictionary
-     *
-     * @param $word
-     * @throws IndexNotFoundException
-     */
+	/**
+	 *  @method createEntry
+	 *
+	 * This method takes three parameters, creates
+	 * an associative array and inserts the same
+	 * into the dictionary
+	 *
+	 * @param $word
+	 * @return array
+	 * @throws IndexNotFoundException
+	 */
 
     public function deleteEntry($word)
     {
