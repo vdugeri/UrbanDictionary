@@ -17,6 +17,60 @@ Classes
  The phpunit framework for testing is used to perform
  unit test on the classes. The TDD principle has been
  employed to make the application robust
+ 
+ Run this on bash to execute the tests
+ ```````bash
+ /vendor/bin/phpunit
+`````````
+
+#Install
+
+- To install this package, PHP 5.5+ and Composer are required
+
+````bash
+composer require Verem/UrbanDictionary
+``````
+
+#usage
+
+- Populating the dictionary with sample words
+
+````````
+Dictionary::populateDictionary();
+`````````
+- Create a manager instance
+
+``````
+$manager = new DictionaryManager();
+``````
+- Create an entry - Returns mixed
+
+``````
+$array =  $manager->createEntry($word, $meaning, $sampleSentence);
+``````
+- Edit an entry - Returns mixed
+
+````````
+$array = $manager->editEntry($word);
+````````
+
+- DeleteEntry - Returns an array
+
+```````
+$dictionary = $manager->deleteEntry($word)
+``````
+
+- Find an entry - Returns mixed
+
+``````
+$word = findEntry($word);
+``````
+
+- Get the dictionary
+
+``````
+$dictionary = Dictionary::getDictionary();
+```````
 
 
 
