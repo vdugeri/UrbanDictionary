@@ -43,8 +43,10 @@ class DictionaryManager
 
     public function deleteEntry($word)
     {
+
         if ($this->findEntry($word)) {
             unset($this->dictionary[$word]);
+			return $this->dictionary;
         } else {
             throw new IndexNotFoundException('element {$word} not found');
         }
