@@ -28,7 +28,7 @@ Classes
 - To install this package, PHP 5.5+ and Composer are required
 
 ````bash
-composer require Verem/UrbanDictionary
+composer require verem/dictionary
 ``````
 
 #usage
