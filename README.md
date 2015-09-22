@@ -83,7 +83,7 @@ Please check out [CONTRIBUTING](CONTRIBUTING.md) file for detailed contribution 
 Open-source Evangelist is maintained by `Verem Dugeri`.
 
 ## License
-Open-source Evangelist is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for details.
+Urban dictionary is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for more details.
 
 
 
