@@ -80,7 +80,7 @@ Please check out [CHANGELOG](CHANGELOG.md) file for information on what has chan
 Please check out [CONTRIBUTING](CONTRIBUTING.md) file for detailed contribution guidelines.
 
 ## Credits
-Open-source Evangelist is maintained by `Verem Dugeri`.
+Urban dictionary is maintained by `Verem Dugeri`.
 
 ## License
 Urban dictionary is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for more details.
